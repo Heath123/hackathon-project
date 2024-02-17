@@ -1,6 +1,6 @@
 <script lang="ts">
   import Fa from 'svelte-fa'
-  import { faPencil, faTrash, faCheck } from '@fortawesome/free-solid-svg-icons'
+  import { faPencil, faTrash, faCheck, faPlus } from '@fortawesome/free-solid-svg-icons'
 
   let costs = [
     { name: "Venue (Innovation Centre)", cost: 200000 },
@@ -19,19 +19,17 @@
   let editingIndex = -1
 </script>
 
-<div class="sidebar">
-  <div class="sidebar-item">
-    <a href="/">Costs</a>
+<div class="costs-list">
+  <div class="header">
+    <h1>Costs</h1>
+
+    <button class="icon-button" on:click={() => {
+      costs = [...costs, { name: "", cost: 0 }]
+      editingIndex = costs.length - 1
+    }}>
+      <Fa icon={faPlus} />
+    </button>
   </div>
-</div>
-
-<div class="content">
-  <h1>Costs</h1>
-
-  <a href="javascript:void(0)" on:click={() => {
-    costs = [...costs, { name: "", cost: 0 }]
-    editingIndex = costs.length - 1
-  }}>Add cost</a>
   
   {#each costs as cost, i}
     <div class="cost-item">
@@ -62,28 +60,12 @@
 </div>
 
 <style>
-  .sidebar {
-    height: 100%;
-    position: fixed;
-    width: 100px;
-    position: fixed;
-    background: #ddd;
-    padding: 8px;
-  }
-
-  .content {
-    margin-left: 100px;
-    padding: 8px 32px;
-  }
-
-  .sidebar-item {
-    width: 100%;
-    text-align: center;
-    font-size: large;
+  .costs-list {
+    width: 400px;
   }
 
   .cost-item {
-    width: 400px;
+    width: 100%;
     margin-bottom: 8px;
     padding: 16px;
     background: #eee;
@@ -95,7 +77,7 @@
   .icon-button {
     font-size: 100%;
     border: none;
-    background: none;
+    background: #eee;
     border-radius: 5px;
     padding: 6px;
     margin-left: 8px;
@@ -117,6 +99,12 @@
   }
 
   .left, .right {
+    align-items: center;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
   }
 </style>
