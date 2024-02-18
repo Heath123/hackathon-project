@@ -9,39 +9,10 @@
 			* {
 				box-sizing: border-box;
 			}
-
-		.sidebar {
-			height: 100%;
-			position: fixed;
-			width: 100px;
-			position: fixed;
-			background: #ddd;
-			padding: 8px;
-		}
-
-		.content {
-			margin-left: 100px;
-			padding: 8px 32px;
-		}
-
-		.sidebar-item {
-			width: 100%;
-			text-align: center;
-			font-size: large;
-		}
 		</style>
 	</head>
 	<body data-sveltekit-preload-data="hover" style="font-family: sans-serif; margin: 0;">
-		<div class="sidebar">
-			<div class="sidebar-item">
-				<a href="/details">Details</a>
-			</div>
-			<div class="sidebar-item">
-				<a href="/">Costs</a>
-			</div>
-		</div>
-		
-		<div class="content">
+		<div style="display: contents">
 			%sveltekit.body%
 		</div>
 	</body>
